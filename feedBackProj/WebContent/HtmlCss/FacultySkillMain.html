@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="./HtmlCss/style1.css">
+</head>
+<body>
+        <header>
+                <div id="head">
+                    <h1 class="header1">
+                   Training Admin
+               </h1> 
+                </div>
+
+           </header>
+
+   <nav class="navigator">         
+                  <div id="navdiv">
+                   <ol class="nav_list">
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       <li><a href="./HomeTrAdmin.html"> Back to Home Page</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li><a href="./CourseMain.html">Course Maintainance</a></li>&nbsp;&nbsp;&nbsp;
+                       <li><a href="./FBReport.html">FeedBack Report</a></li>&nbsp;&nbsp;&nbsp;
+                </ol>  
+                  </div>
+           </nav>
+
+           <div id="mainContent"> 
+            
+             <div id="subContent">
+                 <form action="addFaculty" class="form1" method="post">
+                     <table align="center" cellspacing="10">
+                         <th>Faculty Skill Maintenance</th>
+                         <tr>
+                             <td align="center">
+                             <strong><u>Add Faculty Details</u></strong>     
+                             </td>
+                         </tr>
+                         <tr>
+                             <td>Faculty Id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="fid"></td>
+                         </tr>
+                         <tr>
+                        <td>Faculty Name:&nbsp;&nbsp;<input type="text" name="fname"></td>
+                         </tr>
+                         <tr>
+                             <td>Skills:
+                                 <ul type="none">
+                                     <li><input type="checkbox" name="skills" value="Java">Java</li>
+                                     <li><input type="checkbox" name="skills" value="Jee">JEE</li>
+                                     <li><input type="checkbox" name="skills" value="Sql">SQL</li>
+                                     <li><input type="checkbox" name="skills" value="WebDev">WebDev</li>
+                                     <li><input type="checkbox" name="skills" value="FrameWorks">Frameworks</li>
+                                 </ol>
+                                 <br>
+                                  </td>
+                         </tr>
+                         <tr>
+                         <td> <input type="submit" value="Add Details"> <input type="reset" value="Reset">
+                                </td>
+                         </tr>
+                    
+                     </table>
+                 </form>
+                 <form action="viewFaculty" class="form2">
+                 <table align="center" cellspacing="10">
+                        <th><u>View Faculty Details</u></th>
+                        <tr>
+                            <td>Get record By <select name="viewBased" id="search">
+                                <option value="select" disabled selected hidden>Select any Option</option>
+                                <option value="faculId">FacultyId</option>
+                                <option value="allRec">All Records</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                             <td><input type="submit" value="Get Details"> <input type="reset" value="Reset"></td>   
+                        </tr>
+                    </table>
+                </form> 
+                 
+                           </div>
+
+           </div>
+
+
+
+</body>
+</html>

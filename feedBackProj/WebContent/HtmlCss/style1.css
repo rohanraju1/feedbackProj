@@ -1,0 +1,51 @@
+@charset "ISO-8859-1";
+.header1
+{
+    font-family:'Merriweather',sans-serif;
+    
+}
+
+.nav_list
+{
+    list-style: none;
+    font-family: 'Source Serif Pro', serif;
+    
+}
+
+.nav_list a
+{
+    text-decoration: none;
+    color: white;
+}
+
+.nav_list li
+{
+    display: inline;
+}
+
+#mainContent
+{
+    margin-top: -49px;
+    background-color: coral;
+    height: 892px;
+}
+
+
+#subContent
+{
+   
+    margin-bottom: 49px;
+    margin-right: 100px;
+    background-color: yellow;
+    margin-top: 49px;
+    height: 777px;
+    box-sizing: border-box;
+    margin-left: 100px;
+}
+
+#navdiv
+{
+    background-color: #13B496  ;
+    height: 36px; 
+}
+

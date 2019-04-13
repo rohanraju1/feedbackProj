@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>feedBackProj</display-name>
+  <welcome-file-list>
+    <welcome-file>./HtmlCss/Login.html</welcome-file>
+  </welcome-file-list>
+  
+  
+<servlet>
+<servlet-name>LoginServlet</servlet-name>
+<servlet-class>org.capG.feedBackProj.controller.LoginController</servlet-class>
+</servlet>
+
+ <servlet-mapping>
+ <servlet-name>LoginServlet</servlet-name>
+ <url-pattern>/LoginServ</url-pattern>
+ </servlet-mapping>
+ 
+ 
+ <servlet>
+<servlet-name>AddFacultyServlet</servlet-name>
+<servlet-class>org.capG.feedBackProj.controller.AddFacultyController</servlet-class>
+</servlet>
+
+ <servlet-mapping>
+ <servlet-name>AddFacultyServlet</servlet-name>
+ <url-pattern>/addFaculty</url-pattern>
+ </servlet-mapping>
+ 
+  <servlet>
+<servlet-name>HomeAdminServlet</servlet-name>
+<servlet-class>org.capG.feedBackProj.controller.HomeAdminController</servlet-class>
+</servlet>
+
+ <servlet-mapping>
+ <servlet-name>HomeAdminServlet</servlet-name>
+ <url-pattern>/faculSkill</url-pattern>
+ </servlet-mapping>
+ 
+
+ 
+ <servlet>
+<servlet-name>ViewFacultyServlet</servlet-name>
+<servlet-class>org.capG.feedBackProj.controller.ViewFacultyController</servlet-class>
+</servlet>
+
+ <servlet-mapping>
+ <servlet-name>ViewFacultyServlet</servlet-name>
+ <url-pattern>/ viewFaculty</url-pattern>
+ </servlet-mapping>
+ 
+ 
+ 
+ 
+ 
+</web-app>

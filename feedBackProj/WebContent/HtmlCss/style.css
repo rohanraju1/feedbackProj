@@ -1,0 +1,34 @@
+@charset "ISO-8859-1";
+
+#d1
+{
+    
+    padding-bottom: 21px;
+    padding-top: -5px;
+    margin-top: 85px;
+    background: rgba(29, 23, 24, 0.5);
+    position: absolute;
+    margin-left: 243px;
+    box-sizing: border-box;
+    width: 220px;
+    height: 203px;
+    top: 58px;
+}
+
+
+.t1 input
+{
+    border-radius: 100px;  
+     
+}
+
+.t1 tr
+{
+   color: white;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.body
+{
+background-image: url("back.jpg");
+ }
