@@ -15,31 +15,17 @@ import java.util.Properties;
 
 import org.capG.feedBackProj.dto.EmployeeDTO;
 import org.capG.feedBackProj.dto.FacultyDTO;
+import org.capG.feedBackProj.util.DBUtils;
 
 public  class DaoImpl implements DaoInf {
 
 	
-	public Connection connect() 
-	{
-		Connection con=null;
-		try {
-
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			String dburl="jdbc:mysql://localhost:3306/capgemini?user=root&password=root";
-			 con=DriverManager.getConnection(dburl);
-			
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-			
-			e.printStackTrace();
-		}
-		
-		return con;
-				}
+	
 		
 	@Override
 	public boolean saveFacultyDetails(FacultyDTO facultyDTO) {
 	           
-		Connection con=connect();
+		Connection con=DBUtils.connect();
 		PreparedStatement pstmt=null;
 		String query="insert into faculty_skill values(?,?)";
 		boolean status=false;
@@ -69,7 +55,7 @@ public  class DaoImpl implements DaoInf {
 	@Override
 	public EmployeeDTO getEmployeeDetails(int FacultyId, String Ename) {
 		 System.out.println("check a");
-		Connection con=connect();
+		Connection con=DBUtils.connect();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		EmployeeDTO edto=new EmployeeDTO();
@@ -130,7 +116,7 @@ public  class DaoImpl implements DaoInf {
 	@Override
 	public EmployeeDTO getLoginData(int user_name,String pass_word) {
 		
-		Connection con=connect();
+		Connection con=DBUtils.connect();
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		String query="select EmployeeName,Role from employee_master where Employee_ID=? and Password=?";
@@ -188,7 +174,7 @@ public  class DaoImpl implements DaoInf {
 	@Override
 	public EmployeeDTO viewFaculty(int FacultyId) {
 		
-	   Connection con=connect();
+	   Connection con=DBUtils.connect();
 	   PreparedStatement pstmt=null;
 	   ResultSet rs=null;
 	   try 
@@ -252,7 +238,7 @@ public  class DaoImpl implements DaoInf {
 
 	public List<EmployeeDTO> viewFacultyAll()
 	{
-		 Connection con=connect();
+		 Connection con=DBUtils.connect();
 		 Statement stmt=null;
 		   ResultSet rs=null;
 		   List<EmployeeDTO> lst=new ArrayList<EmployeeDTO>();
@@ -305,4 +291,36 @@ public  class DaoImpl implements DaoInf {
 		return lst;
 
 }
+
+	
+	@Override
+	public boolean updateFacultyDetails(FacultyDTO facultyDTO) {
+		Connection con=DBUtils.connect();
+		PreparedStatement pstmt=null;
+		String query="update faculty_skill set Skill_Set=? where Faculty_Id=?";
+		boolean status=false;
+	         try {
+				pstmt=con.prepareStatement(query);
+				pstmt.setString(1,facultyDTO.getSkills());
+				pstmt.setInt(2,facultyDTO.getFacultyId());
+				
+				int count=pstmt.executeUpdate();
+				
+				if(count>0)
+				{
+					status=true;
+					System.out.println("Updated Faculty successfully");
+				}
+				else 
+				{
+					System.out.println("not Updated");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	         return status;
+		}
+
+
 }

@@ -32,16 +32,14 @@ public class LoginController extends HttpServlet
                  System.out.println(role);
                  if(session!=null)
                  {
-                	 System.out.println("check 1");
+                	 
                    if(role.equals("TRAdmin"))
-             {	       System.out.println("check 2");
-                	 session.setAttribute("userName",Username);  
+             {	     session.setAttribute("userName",Username);  
                 RequestDispatcher rd=req.getRequestDispatcher("./HtmlCss/HomePageAdmin.jsp");
     	    	 rd.forward(req,resp);
     	     }
                if(role.equals("TRCord"))
-               {    System.out.println("check 3");
-            	   session.setAttribute("userName",Username); 
+               {    session.setAttribute("userName",Username); 
             	   RequestDispatcher rd=req.getRequestDispatcher("coOrd page");
       	    	 rd.forward(req,resp);
                }

@@ -46,7 +46,7 @@
 
  <servlet-mapping>
  <servlet-name>ViewFacultyServlet</servlet-name>
- <url-pattern>/ viewFaculty</url-pattern>
+ <url-pattern>/viewFaculty</url-pattern>
  </servlet-mapping>
  
  

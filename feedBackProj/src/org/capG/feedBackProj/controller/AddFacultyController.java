@@ -30,12 +30,11 @@ public class AddFacultyController extends HttpServlet
 	       String[] skills=req.getParameterValues("skills");
 	     
 	             String skill=String.join(",",skills);
-	             System.out.println("check 1");
-	       if(faculty_Id!=0&&faculty_Name!=null)
-	      {    System.out.println("check 2");
-	    	  if(ValService.userValidate(faculty_Id, faculty_Name))
-	    	  {     System.out.println("check 3");
-	    	         /* Go to Service class and do main operation*/       
+	        if(faculty_Id!=0&&faculty_Name!=null)
+	      { 
+	        	if(ValService.userValidate(faculty_Id, faculty_Name))
+	    	  { 
+	        		/* Go to Service class and do main operation*/       
 	    		  
 	    	   boolean saveStatus= AddFaculty.name(faculty_Id, faculty_Name, skill);
 	    	   

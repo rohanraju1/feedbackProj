@@ -44,8 +44,8 @@ public class ValService {
 	}
 
 
-	public static EmployeeDTO getFacultyById(int fId) 
-	{
-		return null;
-	}
+//	public static EmployeeDTO getFacultyById(int fId) 
+//	{
+//		return null;
+//	}
 }

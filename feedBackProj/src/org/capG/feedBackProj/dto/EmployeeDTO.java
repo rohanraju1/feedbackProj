@@ -1,9 +1,8 @@
 package org.capG.feedBackProj.dto;
 
-import java.io.Serializable;
 
 
-public class EmployeeDTO implements Serializable {
+public class EmployeeDTO {
 
 	private int employeeId;
 	private String employeeName;

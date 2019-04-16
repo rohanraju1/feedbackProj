@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update Faculty </title>
+    <link rel="stylesheet" href="fac.css">
+</head>
+<body>
+        <header>
+                <div id="head">
+                    <h1 class="header1">
+                            Faculty Skill Maintainance
+               </h1> 
+                </div>
+
+           </header>
+
+            
+                  <div class="navbar">
+                   
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       <a href="HomeTrAdmin.html">Home Page</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       <div class="dropdown">
+                            <button class="dropbtn">FacultySkillMaintenance 
+                              <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                              <a href="FacultySkillMain.html">AddFaculty</a>
+                              <a href="viewFaculty.html">ViewFaculty</a>
+                              <a href="updateFaculty.html">UpdateFaculty</a>
+                            </div>
+                          </div> 
+                  </div>
+
+           <div id="mainContent"> 
+            
+             <div id="subContent">
+                <form action="updateFaculty" method="post">
+                 
+                    <table align="center" cellspacing="10">
+                    <th><u>Update Faculty Skills </u></th>
+                    <tr>
+                     <td>Id &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number" name="Upid"></td>
+                     <td>Name &nbsp;&nbsp;<input type="text" name="Upname"></td>
+                    </tr>
+                    <tr>
+                                            <td>Update Skills
+                          <ol type="none">
+                                    <li><input type="checkbox" name="Upskills" value="Java">Java</li>
+                                    <li><input type="checkbox" name="Upskills" value="Jee">JEE</li>
+                                    <li><input type="checkbox" name="Upskills" value="Sql">SQL</li>
+                                    <li><input type="checkbox" name="Upskills" value="WebDev">WebDev</li>
+                                    <li><input type="checkbox" name="Upskills" value="FrameWorks">Frameworks</li>
+                                </ol>
+                                <br>
+                     </td>
+                    </tr>
+                    <tr>
+                       <td><input type="submit" value="Update"></td>
+                    </tr>
+                    </table>
+                
+                
+                
+                </form>
+                
+           </div>
+
+
+
+</body>
+</html>
+
+

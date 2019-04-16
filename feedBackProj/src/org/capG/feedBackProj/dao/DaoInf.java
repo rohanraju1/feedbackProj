@@ -17,6 +17,8 @@ public interface DaoInf {
 	public EmployeeDTO viewFaculty(int FacultyId);
 	
 	public List<EmployeeDTO> viewFacultyAll();
+	
+	public boolean updateFacultyDetails(FacultyDTO facultyDTO);
 	/*
 	 
 	
