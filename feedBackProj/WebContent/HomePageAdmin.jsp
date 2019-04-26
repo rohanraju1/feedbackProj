@@ -25,8 +25,8 @@
                     <ol class="nav_list">
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <li><a href="faculSkill">Faculty Skill Maintainance</a></li>&nbsp;&nbsp;&nbsp;
-                        <li><a href="./HtmlCss/CourseMain.html">Course Maintainance</a></li>&nbsp;&nbsp;&nbsp;
-                        <li><a href="./HtmlCss/FBReport.html">FeedBack Report</a></li>&nbsp;&nbsp;&nbsp;
+                        <li><a href="./CourseMain.html">Course Maintainance</a></li>&nbsp;&nbsp;&nbsp;
+                        <li><a href="./FBReport.html">FeedBack Report</a></li>&nbsp;&nbsp;&nbsp;
                  </ol>  
                    
 

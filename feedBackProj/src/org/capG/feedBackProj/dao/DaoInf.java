@@ -21,6 +21,9 @@ public interface DaoInf {
 	public boolean updateFacultyDetails(FacultyDTO facultyDTO);
 	/*
 	 
+	public boolean addCourse();
+	public List<CourseDTO> viewCourses();
+	public boolean updateCourse();
 	
    public boolean addParticipant();
 	

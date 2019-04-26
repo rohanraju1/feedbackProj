@@ -35,7 +35,7 @@ public class LoginController extends HttpServlet
                 	 
                    if(role.equals("TRAdmin"))
              {	     session.setAttribute("userName",Username);  
-                RequestDispatcher rd=req.getRequestDispatcher("./HtmlCss/HomePageAdmin.jsp");
+                RequestDispatcher rd=req.getRequestDispatcher("./HomePageAdmin.jsp");
     	    	 rd.forward(req,resp);
     	     }
                if(role.equals("TRCord"))
@@ -52,7 +52,7 @@ public class LoginController extends HttpServlet
                }
                else 
                {
-            	   resp.sendRedirect("./HtmlCss/Login.html"
+            	   resp.sendRedirect("./Login.html"
             	   		+ "");
                }
                
