@@ -28,18 +28,22 @@ public class ValService {
 	{
 	   boolean status=false;
 	   
-	   EmployeeDTO edto=null;
+	   EmployeeDTO edto;
+	   
 	   DaoInf impl2=new DaoImpl();
 	   
 	   edto=impl2.getEmployeeDetails(fid, fname);
 	   
 	   int vfid=edto.getEmployeeId();
 	   String vfname=edto.getEmployeeName();
-	   
-	   if (fid==vfid&&fname.equals(vfname))
+	   System.out.println(vfid);
+	   System.out.println(vfname);
+	   System.out.println(fname);
+	   if (fname.equals(vfname))
 	   {
 		    status=true;
-	}
+	   }
+	   System.out.println(status);
 	   	return status;
 	}
 

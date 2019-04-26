@@ -14,17 +14,13 @@ public class UpdateFaculty {
 		
 		DaoInf d3=new DaoImpl();
 		
-		
-		
 		FacultyDTO facultyDTO=new FacultyDTO();
 	     facultyDTO.setFacultyId(updateFid);
 	     facultyDTO.setSkills(upSkill);
-		
+		 
 		Upstatus=d3.updateFacultyDetails(facultyDTO);
-		
+	  System.out.println(Upstatus);	
 		return Upstatus;
-
-	
 	
 	}
 	

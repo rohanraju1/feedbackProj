@@ -26,7 +26,7 @@ public class ViewFacultyController extends HttpServlet {
 	  {
 		 List<EmployeeDTO> lst=ViewFaculty.getViewDetails();
 	      req.setAttribute("datalist",lst);
-	      RequestDispatcher rd=req.getRequestDispatcher("./HtmlCss/ViewFaculty.jsp");
+	      RequestDispatcher rd=req.getRequestDispatcher("./ViewFaculty.jsp");
 	      rd.forward(req, resp);
 	  }
 	         

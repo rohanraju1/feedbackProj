@@ -30,8 +30,9 @@ public class UpdateFacultyController extends HttpServlet {
 		        		/* Go to Service class and do main operation*/       
 		    		  
 		    	   boolean saveStatus=UpdateFaculty.updateDetails(updateFid,upSkill);
+		    	   System.out.println(saveStatus);
 		    	  }
-	
+	                     resp.sendRedirect("./updateFaculty.html");
 		      }  
 	       }
 	

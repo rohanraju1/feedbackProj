@@ -8,7 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>View Faculty</title>
-<link rel="stylesheet" href="./HtmlCss/fb.css">
+<link rel="stylesheet" href="./fb.css">
  <style>
        td
        {
