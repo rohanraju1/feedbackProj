@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class HomeAdminController  extends HttpServlet
 {
-
+                       /* Redirect the request to Faculty Skill Maintenance Page*/
    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       

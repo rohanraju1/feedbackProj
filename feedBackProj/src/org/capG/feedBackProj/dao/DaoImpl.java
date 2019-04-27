@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import org.capG.feedBackProj.dto.CourseDTO;
 import org.capG.feedBackProj.dto.EmployeeDTO;
 import org.capG.feedBackProj.dto.FacultyDTO;
 import org.capG.feedBackProj.util.DBUtils;
@@ -49,7 +50,7 @@ public  class DaoImpl implements DaoInf {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	         return false;
+	         return status;
 	}
 
 	@Override
@@ -113,6 +114,8 @@ public  class DaoImpl implements DaoInf {
 		return edto;
 	}
 
+	
+	                 //gets employee object with login data
 	@Override
 	public EmployeeDTO getLoginData(int user_name,String pass_word) {
 		
@@ -170,7 +173,7 @@ public  class DaoImpl implements DaoInf {
     }
 		return edto;
 	}
-
+               // Method Not used for now
 	@Override
 	public EmployeeDTO viewFaculty(int FacultyId) {
 		
@@ -236,7 +239,8 @@ public  class DaoImpl implements DaoInf {
 	   return null;
 	}
 
-	public List<EmployeeDTO> viewFacultyAll()
+       /*Get List of Employee Object based on Faculty Table*/	
+public List<EmployeeDTO> viewFacultyAll()
 	{
 		 Connection con=DBUtils.connect();
 		 Statement stmt=null;
@@ -321,6 +325,124 @@ public  class DaoImpl implements DaoInf {
 			}
 	         return status;
 		}
+
+	@Override
+	public boolean addCourse(CourseDTO addCourseDTO) {
+
+		boolean addstatus=false;
+		
+	Connection con=DBUtils.connect();
+	String sql="Insert into course_master values(?,?,?)";
+	PreparedStatement preparedStatement=null;
+	try {
+		preparedStatement=con.prepareStatement(sql);
+		
+		preparedStatement.setInt(1,addCourseDTO.getCourseId());
+		preparedStatement.setString(2,addCourseDTO.getCourseName());
+		preparedStatement.setInt(3,addCourseDTO.getNoOfDays());
+		
+		int count=preparedStatement.executeUpdate();
+		
+		if(count>0)
+		{
+			addstatus=true;
+			System.out.println("Added Course successfully");
+		}
+		else 
+		{
+			System.out.println("Data present already");
+		}
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	    finally {
+			
+	    	if(con!=null)
+	    	{
+	    		try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	    	}if(preparedStatement!=null)
+	    	{
+	    		try {
+					preparedStatement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	    	}
+		}
+		
+		return addstatus;
+	}
+
+	@Override
+	public List<CourseDTO> viewCourses() {
+
+		 Connection con=DBUtils.connect();
+		 Statement stmt=null;
+		   ResultSet rs=null;
+		   List<CourseDTO> lst=new ArrayList<CourseDTO>();
+		   try {
+			
+			   String qry="Select * from course_master";
+			  rs=stmt.executeQuery(qry);
+			   
+			  while (rs.next()) {
+				CourseDTO cDto=new CourseDTO();
+			     cDto.setCourseId(rs.getInt("Course_ID"));
+			     cDto.setCourseName(rs.getString("CourseName"));
+			     cDto.setNoOfDays(rs.getInt("No_of_Days"));
+			     lst.add(cDto);
+			}
+			   
+		} catch (Exception e) {
+              e.printStackTrace();
+		}
+		   finally {
+			   if(con!=null) 
+			   {
+				   try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			   }
+			   if (stmt!=null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			   if(rs!=null) 
+			   {
+				   try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			   }
+		}
+		
+		
+		return lst;
+	}
+
+	@Override
+	public boolean updateCourse(CourseDTO updateCourseDTO) {
+
+		Connection con=DBUtils.connect();
+		
+		
+		return false;
+	}
 
 
 }

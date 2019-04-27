@@ -16,7 +16,8 @@ import org.capG.feedBackProj.service.ViewFaculty;
 
 
 public class ViewFacultyController extends HttpServlet {
-	
+	                 
+	               /*After View Form action Event data is processed*/
 	  @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -24,9 +25,9 @@ public class ViewFacultyController extends HttpServlet {
 	        
 	  if(session!=null)
 	  {
-		 List<EmployeeDTO> lst=ViewFaculty.getViewDetails();
-	      req.setAttribute("datalist",lst);
-	      RequestDispatcher rd=req.getRequestDispatcher("./ViewFaculty.jsp");
+		 List<EmployeeDTO> lst=ViewFaculty.getViewDetails();      //Call View Faculty Sevice to get Data as List Object
+	      req.setAttribute("datalist",lst); //set list Object to Request Object Scope with Attribute
+	      RequestDispatcher rd=req.getRequestDispatcher("./ViewFaculty.jsp");     //Redirect to ViewFaculty.jsp to show all Data
 	      rd.forward(req, resp);
 	  }
 	         

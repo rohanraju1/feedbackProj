@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class FacultyDTO implements Serializable {
 
 	private int facultyId;
-	private String Skills;
+	private String skills;
 	public int getFacultyId() {
 		return facultyId;
 	}
@@ -15,10 +15,10 @@ public class FacultyDTO implements Serializable {
 		this.facultyId = facultyId;
 	}
 	public String getSkills() {
-		return Skills;
+		return skills;
 	}
 	public void setSkills(String skills) {
-		Skills = skills;
+		this.skills = skills;
 	}
 	
 	

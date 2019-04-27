@@ -18,7 +18,8 @@ import org.capG.feedBackProj.service.ValService;
 
 
 public class LoginController extends HttpServlet
-{
+{                       
+	              /* Login form data is being proceesed */
        @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
        {
@@ -26,16 +27,17 @@ public class LoginController extends HttpServlet
     	     int Username=Integer.parseInt(req.getParameter("un"));
     	     String Password=req.getParameter("pwd");
     	     
-                String role =ValService.loginValidate(Username, Password);
+    	                                                                     
+                String role =ValService.loginValidate(Username, Password);          //Go to ValService class for authentication & get Role
                  
                  HttpSession session=req.getSession();
                  System.out.println(role);
                  if(session!=null)
                  {
-                	 
+                	                                   /*verify the User role and give access*/ 
                    if(role.equals("TRAdmin"))
              {	     session.setAttribute("userName",Username);  
-                RequestDispatcher rd=req.getRequestDispatcher("./HomePageAdmin.jsp");
+                RequestDispatcher rd=req.getRequestDispatcher("./HomePageAdmin.jsp");   
     	    	 rd.forward(req,resp);
     	     }
                if(role.equals("TRCord"))

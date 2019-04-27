@@ -27,7 +27,7 @@
          <td>Faculty_Id</td>
          <td>Faculty_Name</td>
           <td>Role</td>         
-        </tr>
+        </tr>                       <!-- Iterate the List Object  data here  -->
         <%Iterator itr;%>
        <%
      List data=(List)request.getAttribute("datalist");

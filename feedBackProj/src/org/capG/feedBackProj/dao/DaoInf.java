@@ -2,6 +2,7 @@ package org.capG.feedBackProj.dao;
 
 import java.util.List;
 
+import org.capG.feedBackProj.dto.CourseDTO;
 import org.capG.feedBackProj.dto.EmployeeDTO;
 import org.capG.feedBackProj.dto.FacultyDTO;
 
@@ -19,13 +20,21 @@ public interface DaoInf {
 	public List<EmployeeDTO> viewFacultyAll();
 	
 	public boolean updateFacultyDetails(FacultyDTO facultyDTO);
-	/*
-	 
-	public boolean addCourse();
-	public List<CourseDTO> viewCourses();
-	public boolean updateCourse();
 	
-   public boolean addParticipant();
+	public boolean addCourse(CourseDTO addCourseDTO);
+	
+	public List<CourseDTO> viewCourses();
+	
+	public boolean updateCourse(CourseDTO updateCourseDTO);
+	
+	
+	
+	
+	
+	
+	
+	/*
+	   public boolean addParticipant();
 	
    public List<ParticipantDTO> getParticipantDetails();
    

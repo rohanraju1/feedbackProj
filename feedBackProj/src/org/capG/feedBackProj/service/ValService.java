@@ -10,16 +10,17 @@ import org.capG.feedBackProj.dto.FacultyDTO;
 
 public class ValService {
 
+	     /*Login data is validated here */
 	public static String loginValidate(int vusername, String vpassword) {
 		
 		EmployeeDTO dto=null;
 		DaoInf impl1=new DaoImpl();
-		dto=impl1.getLoginData(vusername,vpassword);
+		dto=impl1.getLoginData(vusername,vpassword);   //check for the data in Database with the help of Dao
 		
 		String roleReturned=dto.getRole();
 		
 		
-		return roleReturned ;
+		return roleReturned ;          //return the role of the user 
 		
    	}
 

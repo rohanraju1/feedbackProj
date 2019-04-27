@@ -1,12 +1,11 @@
 package org.capG.feedBackProj.dto;
 
 
-
 public class EmployeeDTO {
 
 	private int employeeId;
 	private String employeeName;
-	private String Role;
+	private String role;
 	
 	
 	public int getEmployeeId() {
@@ -22,10 +21,10 @@ public class EmployeeDTO {
 		this.employeeName = employeeName;
 	}
 	public String getRole() {
-		return Role;
+		return role;
 	}
 	public void setRole(String role) {
-		Role = role;
+		this.role = role;
 	}
 	
 	

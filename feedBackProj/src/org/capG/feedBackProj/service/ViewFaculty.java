@@ -9,13 +9,16 @@ import org.capG.feedBackProj.dto.EmployeeDTO;
 
 public class ViewFaculty {
 
+	
+	        /*Return List Object From DAO*/
 	       public static List getViewDetails()
 	       {
 	    	   List<EmployeeDTO> lst=null;
 	    	   DaoInf d=new DaoImpl();
 	    	   
 	    	   try {
-	 		  lst=d.viewFacultyAll();
+	 		  lst=d.viewFacultyAll();   //Access DataBase with the help of DAO to return all Employee Data
+	 		                                  //Note If he's an Employee thn  he's a Faculty  
 	    	   }
 	    	   catch(Exception e)
 	    	   {
@@ -25,7 +28,7 @@ public class ViewFaculty {
 	 		  
 	       }
            
-	       public static EmployeeDTO getViewDetails(int fid)
+/*	       public static EmployeeDTO getViewDetails(int fid)
 	       {
 	    	   EmployeeDTO edto=null;
 	    	   DaoInf d=new DaoImpl();
@@ -40,7 +43,7 @@ public class ViewFaculty {
 	 		  return edto;
 	 		   
 	       }
-	     
+*/	     
 
 	    	   
 		}

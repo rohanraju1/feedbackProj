@@ -24,7 +24,10 @@
                    <div id="navdiv">
                     <ol class="nav_list">
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <li><a href="faculSkill">Faculty Skill Maintainance</a></li>&nbsp;&nbsp;&nbsp;
+                      
+                       <!-- facultySkill goes to HomeAdmin Controller -->
+                       
+                        <li><a href="faculSkill">Faculty Skill Maintainance</a></li>&nbsp;&nbsp;&nbsp;  
                         <li><a href="./CourseMain.html">Course Maintainance</a></li>&nbsp;&nbsp;&nbsp;
                         <li><a href="./FBReport.html">FeedBack Report</a></li>&nbsp;&nbsp;&nbsp;
                  </ol>  

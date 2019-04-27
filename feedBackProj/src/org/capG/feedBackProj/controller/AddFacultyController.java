@@ -20,7 +20,7 @@ import org.capG.feedBackProj.service.ValService;
 
 public class AddFacultyController extends HttpServlet
 { 
-   
+                     /*Add Faculty Form Data is Processed Here*/
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
@@ -29,31 +29,40 @@ public class AddFacultyController extends HttpServlet
 	       String faculty_Name=req.getParameter("fname");
 	       String[] skills=req.getParameterValues("skills");
 	     
-	             String skill=String.join(",",skills);
-	        if(faculty_Id!=0&&faculty_Name!=null)
+	             String skill=String.join(",",skills);     //Join the array values with separated commas
+	        if(faculty_Id!=0&&faculty_Name!=null)            // check whether values are not null
 	      { 
-	        	if(ValService.userValidate(faculty_Id, faculty_Name))
+	        	if(ValService.userValidate(faculty_Id, faculty_Name))  //validate the User if he's a Faculty    
 	    	  { 
 	        		/* Go to Service class and do main operation*/       
 	    		  
-	    	   boolean saveStatus= AddFaculty.name(faculty_Id, faculty_Name, skill);
+	    	   boolean saveStatus= AddFaculty.name(faculty_Id, faculty_Name, skill);  //Call the AddFaculty Service to access Dao
 	    	   
-	    	   if(saveStatus) {
+	    	   if(saveStatus)                              //if Data added Display Response Positive
+	    	   {         
 	    	      resp.setContentType("text/html");
 	    	     PrintWriter out=resp.getWriter();
 	    	     out.println("<html><body>Added Faculty</body></html>");
 	    	     out.close();
 	    	   }
-	    	   else {
+	    	   else                                           //if Data not Added give Negative Response
+	    	   {                                         
 		    		  resp.setContentType("text/html");
 			    	     PrintWriter out=resp.getWriter();
-			    	     out.println("<html><body>Something went Wrong</body></html>");
+			    	     out.println("<html><body>Something Went Wrong</body></html>");
 			    	     out.close();
 			    	  
 				}
 	    	  }  
+	        	else                                           // if he's not faculty give appropriate Response
+	        	{
+	        		  resp.setContentType("text/html");
+			    	     PrintWriter out=resp.getWriter();
+			    	     out.println("<html><body>Not a Faculty</body></html>");
+			    	     out.close();
+	        	}
 	      }
-	      else 
+	      else    
 	      {
 	    	  System.out.println("facId and facname null");
 	      }
