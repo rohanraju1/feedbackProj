@@ -1,25 +1,20 @@
-package org.capG.feedBackProj.controller;
+package org.cap.feedbackproj.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.lang.annotation.Documented;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.capG.feedBackProj.service.ValService;
+import org.cap.feedbackproj.service.ValService;
 
 
 public class LoginController extends HttpServlet
 {                       
-	              /* Login form data is being proceesed */
+	              /* Login form data is being processed */
        @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
        {
@@ -37,7 +32,7 @@ public class LoginController extends HttpServlet
                 	                                   /*verify the User role and give access*/ 
                    if(role.equals("TRAdmin"))
              {	     session.setAttribute("userName",Username);  
-                RequestDispatcher rd=req.getRequestDispatcher("./HomePageAdmin.jsp");   
+                RequestDispatcher rd=req.getRequestDispatcher("./HomeTrAdmin.html");   
     	    	 rd.forward(req,resp);
     	     }
                if(role.equals("TRCord"))

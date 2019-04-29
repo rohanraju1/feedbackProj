@@ -1,11 +1,11 @@
-package org.capG.feedBackProj.service;
+package org.cap.feedbackproj.service;
 
 import java.util.Iterator;
 import java.util.List;
 
-import org.capG.feedBackProj.dao.DaoImpl;
-import org.capG.feedBackProj.dao.DaoInf;
-import org.capG.feedBackProj.dto.EmployeeDTO;
+import org.cap.feedbackproj.dao.DaoImpl;
+import org.cap.feedbackproj.dao.DaoInf;
+import org.cap.feedbackproj.dto.EmployeeDTO;
 
 public class ViewFaculty {
 

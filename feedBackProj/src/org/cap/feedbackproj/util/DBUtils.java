@@ -1,4 +1,4 @@
-package org.capG.feedBackProj.util;
+package org.cap.feedbackproj.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,13 +13,13 @@ public class DBUtils
 
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			String dburl="jdbc:mysql://localhost:3306/capgemini?user=root&password=root";
-			 con=DriverManager.getConnection(dburl);
-			
+			con=DriverManager.getConnection(dburl);
+
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-			
+
 			e.printStackTrace();
 		}
-		
+
 		return con;
-				}
+	}
 }

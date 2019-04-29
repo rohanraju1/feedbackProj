@@ -8,7 +8,7 @@
   
 <servlet>
 <servlet-name>LoginServlet</servlet-name>
-<servlet-class>org.capG.feedBackProj.controller.LoginController</servlet-class>
+<servlet-class>org.cap.feedbackproj.controller.LoginController</servlet-class>
 </servlet>
 
  <servlet-mapping>
@@ -19,7 +19,7 @@
  
  <servlet>
 <servlet-name>AddFacultyServlet</servlet-name>
-<servlet-class>org.capG.feedBackProj.controller.AddFacultyController</servlet-class>
+<servlet-class>org.cap.feedbackproj.controller.AddFacultyController</servlet-class>
 </servlet>
 
  <servlet-mapping>
@@ -29,7 +29,7 @@
  
   <servlet>
 <servlet-name>HomeAdminServlet</servlet-name>
-<servlet-class>org.capG.feedBackProj.controller.HomeAdminController</servlet-class>
+<servlet-class>org.cap.feedbackproj.controller.HomeAdminController</servlet-class>
 </servlet>
 
  <servlet-mapping>
@@ -41,7 +41,7 @@
  
  <servlet>
 <servlet-name>ViewFacultyServlet</servlet-name>
-<servlet-class>org.capG.feedBackProj.controller.ViewFacultyController</servlet-class>
+<servlet-class>org.cap.feedbackproj.controller.ViewFacultyController</servlet-class>
 </servlet>
 
  <servlet-mapping>
@@ -49,7 +49,14 @@
  <url-pattern>/viewFaculty</url-pattern>
  </servlet-mapping>
  
- 
+ <servlet>
+ <servlet-name>AddCourseServlet</servlet-name>
+ <servlet-class>org.cap.feedbackproj.controller.AddCourseController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>AddCourseServlet</servlet-name>
+ <url-pattern>/addCourse</url-pattern>
+ </servlet-mapping>
  
  
  

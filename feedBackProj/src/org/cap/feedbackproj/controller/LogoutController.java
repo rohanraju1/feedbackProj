@@ -1,4 +1,4 @@
-package org.capG.feedBackProj.controller;
+package org.cap.feedbackproj.controller;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package org.capG.feedBackProj.dto;
+package org.cap.feedbackproj.dto;
 
 import java.io.Serializable;
 

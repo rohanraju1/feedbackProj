@@ -1,4 +1,4 @@
-package org.capG.feedBackProj.controller;
+package org.cap.feedbackproj.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.capG.feedBackProj.service.UpdateFaculty;
-import org.capG.feedBackProj.service.ValService;
+import org.cap.feedbackproj.service.UpdateFaculty;
+import org.cap.feedbackproj.service.ValService;
 
 @WebServlet("/updateFaculty")
 public class UpdateFacultyController extends HttpServlet {

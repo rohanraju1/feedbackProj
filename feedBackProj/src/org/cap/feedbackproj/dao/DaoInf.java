@@ -1,10 +1,10 @@
-package org.capG.feedBackProj.dao;
+package org.cap.feedbackproj.dao;
 
 import java.util.List;
 
-import org.capG.feedBackProj.dto.CourseDTO;
-import org.capG.feedBackProj.dto.EmployeeDTO;
-import org.capG.feedBackProj.dto.FacultyDTO;
+import org.cap.feedbackproj.dto.CourseDTO;
+import org.cap.feedbackproj.dto.EmployeeDTO;
+import org.cap.feedbackproj.dto.FacultyDTO;
 
 
 public interface DaoInf {
@@ -45,7 +45,7 @@ public interface DaoInf {
    public boolean addFeedBack();
    
    public boolean addTrainingPrgm();
-   
+   ;
    public boolean updateTrainingPrgm();
    
    public boolean deleteTrainingPrgm();
