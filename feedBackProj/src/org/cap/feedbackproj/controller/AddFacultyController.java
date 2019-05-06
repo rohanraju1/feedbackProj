@@ -64,7 +64,10 @@ public class AddFacultyController extends HttpServlet
 		}
 		else    
 		{
-			System.out.println("facId and facname null");
+			 resp.setContentType("text/html");
+    	     PrintWriter out=resp.getWriter();
+    	     out.println("<html><body>Values are null</body></html>");
+    	     out.close();
 		}
 
 	}

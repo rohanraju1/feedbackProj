@@ -25,9 +25,8 @@ public class AddCourseController extends HttpServlet {
 		if(courseId!=0&&courseName!=null&&courseDays!=0)     // check whether values are not null
 		{
 			addedStatus=AddCourse.addCourse(courseId, courseName, courseDays);
-		}
+		
 
-		RequestDispatcher rd=req.getRequestDispatcher("./AddCourse.html");
 
 		if(addedStatus)                           //if Data added Display Response Positive
 		{
@@ -42,6 +41,14 @@ public class AddCourseController extends HttpServlet {
 			out.println("<html><body>Something Went Wrong</body></html>");
 			out.close();
 
+		}
+		}
+		else                                                //if data is not present or null
+		{
+			 resp.setContentType("text/html");
+   	     PrintWriter out=resp.getWriter();
+   	     out.println("<html><body>Values are null</body></html>");
+   	     out.close();
 		}
 
 	}

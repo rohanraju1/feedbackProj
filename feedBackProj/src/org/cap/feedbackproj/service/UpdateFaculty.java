@@ -2,7 +2,6 @@ package org.cap.feedbackproj.service;
 
 import org.cap.feedbackproj.dao.DaoImpl;
 import org.cap.feedbackproj.dao.DaoInf;
-import org.cap.feedbackproj.dto.EmployeeDTO;
 import org.cap.feedbackproj.dto.FacultyDTO;
 
 public class UpdateFaculty {

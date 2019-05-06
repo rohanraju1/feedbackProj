@@ -32,27 +32,28 @@ public class LoginController extends HttpServlet
                 	                                   /*verify the User role and give access*/ 
                    if(role.equals("TRAdmin"))
              {	     session.setAttribute("userName",Username);  
-                RequestDispatcher rd=req.getRequestDispatcher("./HomeTrAdmin.html");   
+                RequestDispatcher rd=req.getRequestDispatcher("./HomeTrAdmin.html");   //go to Home Page of Admin
     	    	 rd.forward(req,resp);
     	     }
                if(role.equals("TRCord"))
                {    session.setAttribute("userName",Username); 
-            	   RequestDispatcher rd=req.getRequestDispatcher("coOrd page");
+            	   RequestDispatcher rd=req.getRequestDispatcher("./HomeTrCoord.html");		//go to Home Page of Co-ordinator
       	    	 rd.forward(req,resp);
                }
     	    
                else if(role.equals("TRParticipant"))
                {
             	   session.setAttribute("userName",Username); 
-            	   RequestDispatcher rd=req.getRequestDispatcher("TR partcipant page");
+            	   RequestDispatcher rd=req.getRequestDispatcher("./HomeTParticipant.html");	//go to Home Page of Participant
       	    	 rd.forward(req,resp);
                }
-               else 
-               {
-            	   resp.sendRedirect("./Login.html"
-            	   		+ "");
-               }
+            
                
+                 }
+                 else 
+                 {
+              	   resp.sendRedirect("./Login.html"			//redirect to Login page if none of the roles matched
+              	   		+ "");
                  }
        }
 	

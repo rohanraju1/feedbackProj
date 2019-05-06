@@ -1,36 +1,29 @@
 package org.cap.feedbackproj.dao;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Properties;
+import java.util.Map;
 
 import org.cap.feedbackproj.dto.CourseDTO;
 import org.cap.feedbackproj.dto.EmployeeDTO;
 import org.cap.feedbackproj.dto.FacultyDTO;
+import org.cap.feedbackproj.dto.ParticipantDTO;
+import org.cap.feedbackproj.dto.TrainingProgramDTO;
 import org.cap.feedbackproj.util.DBUtils;
 
 public  class DaoImpl implements DaoInf {
 
-
-
-
+	/*return boolean value based on save faculty data*/
 	@Override
 	public boolean saveFacultyDetails(FacultyDTO facultyDTO) {
 
 		Connection con=DBUtils.connect();
 		PreparedStatement pstmt=null;
-		String query="insert into faculty_skill values(?,?)";
 		boolean status=false;
 		try {
+			String query="insert into faculty_skill values(?,?)";
 			pstmt=con.prepareStatement(query);
 			pstmt.setInt(1,facultyDTO.getFacultyId());
 			pstmt.setString(2,facultyDTO.getSkills());
@@ -53,6 +46,7 @@ public  class DaoImpl implements DaoInf {
 		return status;
 	}
 
+	/*return Employee Object based on Faculty-Id and Name */
 	@Override
 	public EmployeeDTO getEmployeeDetails(int FacultyId, String Ename) {
 		System.out.println("check a");
@@ -61,9 +55,9 @@ public  class DaoImpl implements DaoInf {
 		ResultSet rs=null;
 		EmployeeDTO edto=new EmployeeDTO();
 		System.out.println("check b");
-		String query="select * from employee_master where Employee_ID=?";
 		System.out.println("check c");
 		try {
+			String query="select * from employee_master where Employee_ID=?";
 			pstmt=con.prepareStatement(query);
 			System.out.println("check d");
 			pstmt.setInt(1,FacultyId);
@@ -114,17 +108,16 @@ public  class DaoImpl implements DaoInf {
 		return edto;
 	}
 
-
-	//gets employee object with login data
+	/*return employee object with login data*/
 	@Override
 	public EmployeeDTO getLoginData(int user_name,String pass_word) {
 
 		Connection con=DBUtils.connect();
 		PreparedStatement ps=null;
 		ResultSet rs=null;
-		String query="select EmployeeName,Role from employee_master where Employee_ID=? and Password=?";
 		EmployeeDTO edto=new EmployeeDTO();
 		try {
+			String query="select EmployeeName,Role from employee_master where Employee_ID=? and Password=?";
 			ps=con.prepareStatement(query);
 			ps.setInt(1,user_name);
 			ps.setString(2,pass_word);
@@ -173,7 +166,9 @@ public  class DaoImpl implements DaoInf {
 		}
 		return edto;
 	}
-	// Method Not used for now
+	/* Method Not used for now*/
+
+	/*return Employee Object for checking faculty present in employees or not*/
 	@Override
 	public EmployeeDTO viewFaculty(int FacultyId) {
 
@@ -296,14 +291,14 @@ public  class DaoImpl implements DaoInf {
 
 	}
 
-
+	/*return boolean value based on update of faculty skills*/
 	@Override
 	public boolean updateFacultyDetails(FacultyDTO facultyDTO) {
 		Connection con=DBUtils.connect();
 		PreparedStatement pstmt=null;
-		String query="update faculty_skill set Skill_Set=? where Faculty_Id=?";
 		boolean status=false;
 		try {
+			String query="update faculty_skill set Skill_Set=? where Faculty_Id=?";
 			pstmt=con.prepareStatement(query);
 			pstmt.setString(1,facultyDTO.getSkills());
 			pstmt.setInt(2,facultyDTO.getFacultyId());
@@ -326,17 +321,18 @@ public  class DaoImpl implements DaoInf {
 		return status;
 	}
 
+	/*return boolean value based on add course operation*/
 	@Override
 	public boolean addCourse(CourseDTO addCourseDTO) {
 
 		boolean addstatus=false;
 
 		Connection con=DBUtils.connect();
-		String sql="Insert into course_master values(?,?,?)";
 		PreparedStatement preparedStatement=null;
 		try {
-			preparedStatement=con.prepareStatement(sql);
+			String sql="Insert into course_master values(?,?,?)";
 
+			preparedStatement=con.prepareStatement(sql);
 			preparedStatement.setInt(1,addCourseDTO.getCourseId());
 			preparedStatement.setString(2,addCourseDTO.getCourseName());
 			preparedStatement.setInt(3,addCourseDTO.getNoOfDays());
@@ -382,6 +378,7 @@ public  class DaoImpl implements DaoInf {
 		return addstatus;
 	}
 
+	/*return List Object of Courses Present in Course Table*/
 	@Override
 	public List<CourseDTO> viewCourses() {
 
@@ -390,14 +387,14 @@ public  class DaoImpl implements DaoInf {
 		ResultSet rs=null;
 		List<CourseDTO> lst=new ArrayList<CourseDTO>();
 		try {
-
+			stmt=con.createStatement();
 			String qry="Select * from course_master";
 			rs=stmt.executeQuery(qry);
-
 			while (rs.next()) {
+
 				CourseDTO cDto=new CourseDTO();
 				cDto.setCourseId(rs.getInt("Course_ID"));
-				cDto.setCourseName(rs.getString("CourseName"));
+				cDto.setCourseName(rs.getString("Course_Name"));
 				cDto.setNoOfDays(rs.getInt("No_of_Days"));
 				lst.add(cDto);
 			}
@@ -431,18 +428,18 @@ public  class DaoImpl implements DaoInf {
 			}
 		}
 
-
 		return lst;
 	}
 
+	/*return boolean value based on update operation for Extending Number of Days in a Course*/
 	@Override
 	public boolean updateCourse(CourseDTO updateCourseDTO) {
 
 		Connection con=DBUtils.connect();
 		PreparedStatement pstmt=null;
-		String query="Update course_master set No_of_Days=? where Course_ID=? and Course_Name=?";
 		boolean upStatus=false;
 		try {
+			String query="Update course_master set No_of_Days=? where Course_ID=? and Course_Name=?";
 			pstmt=con.prepareStatement(query);
 			pstmt.setInt(1,updateCourseDTO.getNoOfDays());
 			pstmt.setInt(2,updateCourseDTO.getCourseId());
@@ -474,6 +471,362 @@ public  class DaoImpl implements DaoInf {
 			}
 		}
 		return upStatus;
+	}
+
+	/*return boolean value based on add training program operation*/
+	@Override
+	public boolean addTrainingPrgm(TrainingProgramDTO trainingProgramDTO) {
+
+		Connection con=DBUtils.connect();
+		PreparedStatement pstmt=null;
+		boolean addTraining=false;
+		try {
+
+			String insertQuery="INSERT INTO training_program VALUES(?,(SELECT c.Course_ID FROM course_master c WHERE c.Course_Name=?),\r\n" + 
+					"					(SELECT Faculty_Id FROM faculty_skill  WHERE Faculty_Id IN(SELECT Employee_ID\r\n" + 
+					"					FROM employee_master\r\n" + 
+					"					WHERE EmployeeName=?)),?,?)";
+
+			pstmt=con.prepareStatement(insertQuery);
+
+			pstmt.setInt(1,trainingProgramDTO.getTrainingCode());
+			pstmt.setString(2,trainingProgramDTO.getCourseName());
+			pstmt.setString(3,trainingProgramDTO.getFacultyName());
+			pstmt.setDate(4,trainingProgramDTO.getsDate());
+			pstmt.setDate(5,trainingProgramDTO.geteDate());
+
+			int count=pstmt.executeUpdate();
+			if(count>0)
+			{
+				addTraining=true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+
+			if(con!=null)
+			{
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(pstmt!=null)
+			{
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return addTraining;
+	}
+
+	/*return boolean value based on update operation for Extending Program End-Date*/
+	@Override
+	public boolean updateTrainingPrgm(TrainingProgramDTO updateProgramDTO) {
+
+		Connection con=DBUtils.connect();
+		PreparedStatement pstmt=null;
+		boolean status=false;
+		try {
+			String upQuery="UPDATE training_program SET End_Date=?\r\n" + 
+					"WHERE Training_Code=? AND Faculty_Code IN(SELECT Faculty_Id\r\n" + 
+					"FROM faculty_skill\r\n" + 
+					"WHERE Faculty_Id IN(SELECT Employee_ID\r\n" + 
+					"FROM employee_master\r\n" + 
+					"WHERE EmployeeName=?)\r\n" + 
+					")\r\n" + 
+					"";
+			pstmt=con.prepareStatement(upQuery);
+			pstmt.setDate(1,updateProgramDTO.geteDate());
+			pstmt.setInt(2,updateProgramDTO.getTrainingCode());
+			pstmt.setString(3,updateProgramDTO.getFacultyName());
+
+			int count=pstmt.executeUpdate();
+
+			if(count>0)
+			{
+				status=true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return status;
+	}
+
+	/*return boolean value based on delete operation of training program*/
+	@Override
+	public boolean deleteTrainingPrgm(int trainingCode) {
+
+		boolean delStatus=false;
+
+		Connection con=DBUtils.connect();
+		PreparedStatement pstmt=null;
+		try {
+
+			String delQuery="DELETE FROM training_program\r\n" + 
+					"WHERE Training_Code=?";
+
+			pstmt=con.prepareStatement(delQuery);
+			pstmt.setInt(1,trainingCode);
+			int count=pstmt.executeUpdate();
+
+			if(count>0)
+			{
+				delStatus=true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return delStatus;
+	}
+
+	/*return List Object of Training Programs present in Training Program Table*/
+	@Override
+	public List<TrainingProgramDTO> viewPrgms() {
+
+		Connection con=DBUtils.connect();
+		Statement pstmt=null;
+		ResultSet rs=null;
+		List<TrainingProgramDTO> tprgList=new ArrayList<TrainingProgramDTO>();
+		try {
+			String viewQuery="SELECT tp.Training_Code,c.Course_Name,e.EmployeeName,tp.Start_Date,tp.End_Date\r\n" + 
+					"FROM training_program tp,course_master c,employee_master e,faculty_skill f\r\n" + 
+					"WHERE tp.Course_Code=c.Course_ID AND e.Employee_ID=f.Faculty_Id AND f.Faculty_Id=tp.Faculty_Code";		
+			pstmt=con.createStatement();
+			rs=pstmt.executeQuery(viewQuery);
+
+			while (rs.next()) {
+				TrainingProgramDTO tProgramDTO=new TrainingProgramDTO();
+				tProgramDTO.setTrainingCode(rs.getInt("Training_Code"));
+				tProgramDTO.setCourseName(rs.getString("Course_Name"));
+				tProgramDTO.setFacultyName(rs.getString("EmployeeName"));
+				tProgramDTO.setsDate(rs.getDate("Start_Date"));
+				tProgramDTO.seteDate(rs.getDate("End_Date"));
+				tprgList.add(tProgramDTO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			if(con!=null) 
+			{
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (pstmt!=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(rs!=null) 
+			{
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return tprgList;
+	}
+
+	/*return boolean value based on add Participant Operation*/
+	@Override
+	public boolean addParticipant(ParticipantDTO addPartipantDTO) {
+
+		Connection con=DBUtils.connect();
+		PreparedStatement pstmt=null;
+		boolean addStatus=false;
+		try {
+			String addQuery="INSERT INTO `training-participant_enrollment`\r\n" + 
+					"VALUES(\r\n" + 
+					"(SELECT `Training_Code` FROM `training_program`\r\n" + 
+					"WHERE `Training_Code`=? AND `Course_Code` IN(SELECT `Course_ID`\r\n" + 
+					"FROM `course_master`\r\n" + 
+					"WHERE `Course_Name`=?)\r\n" + 
+					"),\r\n" + 
+					"(SELECT `Employee_ID` FROM `employee_master`\r\n" + 
+					"WHERE `EmployeeName`=? AND `Employee_ID`=?)\r\n" + 
+					")";
+			pstmt=con.prepareStatement(addQuery);
+
+			pstmt.setInt(1,addPartipantDTO.getTrainingCode());
+			pstmt.setString(2,addPartipantDTO.getCourseName());
+			pstmt.setString(3,addPartipantDTO.getParticipantName());
+			pstmt.setInt(4,addPartipantDTO.getParticipantCode());
+
+			int count=pstmt.executeUpdate();
+
+			if (count>0) {
+				addStatus=true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();            
+		}
+		return addStatus;
+	}
+
+
+	/*return list Object of Participants*/
+	@Override
+	public List<ParticipantDTO> getParticipantDetails() {
+
+		Connection con=DBUtils.connect();
+		Statement stmt=null;
+		ResultSet rs=null;
+		List<ParticipantDTO> pList=new ArrayList<ParticipantDTO>();
+		try {
+			String query="SELECT tpe.`Participant_Id`,e.`EmployeeName`,c.`Course_Name`,tpe.`Training_code`\r\n" + 
+					"FROM `training-participant_enrollment` tpe,`employee_master` e,`training_program` tp,`course_master` c\r\n" + 
+					"WHERE tpe.`Training_code`=tp.`Training_Code` AND tpe.`Participant_Id`=e.`Employee_ID` AND tp.`Course_Code`=c.`Course_ID`\r\n" + 
+					"";
+
+			stmt=con.createStatement();
+			rs=stmt.executeQuery(query);
+
+			while(rs.next())
+			{
+				ParticipantDTO getParticipantDTO=new ParticipantDTO();
+				getParticipantDTO.setTrainingCode(rs.getInt("Training_Code"));
+				getParticipantDTO.setParticipantName(rs.getString("EmployeeName"));
+				getParticipantDTO.setCourseName(rs.getString("Course_Name"));
+				getParticipantDTO.setParticipantCode(rs.getInt("Participant_Id"));
+				pList.add(getParticipantDTO);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		finally {
+			if (con!=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if (stmt!=null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if (rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return pList;
+
+	}
+
+
+	/*return boolean value based on delete participant operation*/
+	@Override
+	public boolean deleteParticipantDetails(ParticipantDTO participantDTO) {
+
+		Connection con=DBUtils.connect();
+		PreparedStatement pstmt=null;
+		boolean delStatus=false;
+		try {
+			String delQuery="DELETE FROM `training-participant_enrollment`\r\n" + 
+					"WHERE `Training_Code`=? AND `Participant_Id` IN(SELECT `Employee_ID`\r\n" + 
+					"FROM `employee_master` WHERE `Employee_ID`=? AND `EmployeeName`=?)";
+			pstmt=con.prepareStatement(delQuery);
+			pstmt.setInt(1,participantDTO.getTrainingCode());
+			pstmt.setInt(2,participantDTO.getParticipantCode());
+			pstmt.setString(3,participantDTO.getParticipantName());
+			int count=pstmt.executeUpdate();
+
+			if(count>0)
+			{
+				delStatus=true;
+			}
+		} 
+		catch (Exception e)
+		{
+			e.printStackTrace();		
+		}
+		finally
+		{
+			if(con!=null)
+			{
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(pstmt!=null)
+			{
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return delStatus;
+	}
+
+	
+	@Override
+	public Map<CourseDTO, EmployeeDTO> getViewAddFeedBack() {
+
+		Connection con=DBUtils.connect();
+		Statement stmt=null;
+		ResultSet rs=null;
+		Map<CourseDTO,EmployeeDTO> map=null;
+		try {
+			String query="SELECT c.`Course_Name`,e.`EmployeeName`\r\n" + 
+					"FROM `training_program` tp,`course_master` c,`employee_master` e,`faculty_skill` f\r\n" + 
+					"WHERE tp.`Course_Code`=c.`Course_ID` AND tp.`Faculty_Code`=f.`Faculty_Id` AND f.`Faculty_Id`=e.`Employee_ID`";
+			
+			stmt=con.createStatement();
+			rs=stmt.executeQuery(query);
+			CourseDTO cDto=new CourseDTO();
+			EmployeeDTO eDto=new EmployeeDTO();
+			while(rs.next())
+			{
+				map=new HashMap<CourseDTO,EmployeeDTO>();
+				
+				cDto.setCourseName(rs.getString("Course_Name"));
+				eDto.setEmployeeName(rs.getString("EmployeeName"));
+				map.put(cDto, eDto);
+				System.out.println("check");
+			}
+			
+			
+		} catch (Exception e) {
+
+		   e.printStackTrace();
+		}
+               return map;		
 	}
 
 

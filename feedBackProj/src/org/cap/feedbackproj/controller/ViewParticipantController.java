@@ -10,31 +10,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.cap.feedbackproj.dto.CourseDTO;
-import org.cap.feedbackproj.service.ViewCourse;
+import org.cap.feedbackproj.dto.ParticipantDTO;
+import org.cap.feedbackproj.service.ViewParticipant;
 
-
-public class ViewCourseController extends HttpServlet {
-
-
-	/*View course Form event is processed*/
+public class ViewParticipantController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+ 
 		HttpSession session=req.getSession();
 
 		if(session!=null)
 		{
 
-			List<CourseDTO> clst=ViewCourse.getCourses();          //Call View Course Sevice to get Data as List Object
+			List<ParticipantDTO> partLst=ViewParticipant.getParticipant();   //Call View Participant Sevice to get Data as List Object
 
-			req.setAttribute("courselst",clst);         //set list Object to Request Object Scope with Attribute
-			RequestDispatcher rd=req.getRequestDispatcher("./ViewCourse.jsp"); //Redirect to ViewCourse.jsp to show all Data
+			req.setAttribute("partcipList",partLst);         //set list Object to Request Object Scope with Attribute
+			RequestDispatcher rd=req.getRequestDispatcher("./ViewParticipant.jsp"); //Redirect to ViewParticipant.jsp to show all Data
 			rd.forward(req, resp);
-		}
-
-
-
+		}	
+	
 	}
+	
 }

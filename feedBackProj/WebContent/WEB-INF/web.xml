@@ -58,6 +58,84 @@
  <url-pattern>/addCourse</url-pattern>
  </servlet-mapping>
  
+ <servlet>
+ <servlet-name>ViewCourseServlet</servlet-name>
+ <servlet-class>org.cap.feedbackproj.controller.ViewCourseController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>ViewCourseServlet</servlet-name>
+ <url-pattern>/viewCourse</url-pattern>
+ </servlet-mapping>
  
+ <servlet>
+ <servlet-name>UpdateCourseServlet</servlet-name>
+ <servlet-class>org.cap.feedbackproj.controller.UpdateCourseController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>UpdateCourseServlet</servlet-name>
+ <url-pattern>/UpdateCourse</url-pattern>
+ </servlet-mapping>
  
+ <servlet>
+ <servlet-name>AddTPrgmServlet</servlet-name>
+ <servlet-class>org.cap.feedbackproj.controller.AddTrainingProgramController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>AddTPrgmServlet</servlet-name>
+ <url-pattern>/addPrgm</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+ <servlet-name>ViewTPrgmServlet</servlet-name>
+ <servlet-class>org.cap.feedbackproj.controller.ViewTrainingProgramController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>ViewTPrgmServlet</servlet-name>
+ <url-pattern>/viewPrgm</url-pattern>
+ </servlet-mapping>
+ 
+  <servlet>
+ <servlet-name>UpdateTPrgmServlet</servlet-name>
+ <servlet-class>org.cap.feedbackproj.controller.UpdateTrainingProgramController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>UpdateTPrgmServlet</servlet-name>
+ <url-pattern>/updatePrgm</url-pattern>
+ </servlet-mapping>
+ 
+   <servlet>
+ <servlet-name>DeleteTPrgmServlet</servlet-name>
+ <servlet-class>org.cap.feedbackproj.controller.DeleteTrainingProgramController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>DeleteTPrgmServlet</servlet-name>
+ <url-pattern>/deletePrgm</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+ <servlet-name>AddParticipantServlet</servlet-name>
+ <servlet-class>org.cap.feedbackproj.controller.AddParticipantController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>AddParticipantServlet</servlet-name>
+ <url-pattern>/addParticipant</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+ <servlet-name>ViewParticipantServlet</servlet-name>
+ <servlet-class>org.cap.feedbackproj.controller.ViewParticipantController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>ViewParticipantServlet</servlet-name>
+ <url-pattern>/viewParticipant</url-pattern>
+ </servlet-mapping>
+ 
+  <servlet>
+ <servlet-name>DeleteParticipantServlet</servlet-name>
+ <servlet-class>org.cap.feedbackproj.controller.DeleteParticipantController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>DeleteParticipantServlet</servlet-name>
+ <url-pattern>/deleteParticipant</url-pattern>
+ </servlet-mapping>
 </web-app>

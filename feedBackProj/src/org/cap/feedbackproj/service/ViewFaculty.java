@@ -1,6 +1,5 @@
 package org.cap.feedbackproj.service;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.cap.feedbackproj.dao.DaoImpl;
@@ -11,7 +10,7 @@ public class ViewFaculty {
 
 	
 	        /*Return List Object From DAO*/
-	       public static List getViewDetails()
+	       public static List<EmployeeDTO> getViewDetails()
 	       {
 	    	   List<EmployeeDTO> lst=null;
 	    	   DaoInf d=new DaoImpl();

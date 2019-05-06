@@ -56,7 +56,7 @@ public class UpdateFacultyController extends HttpServlet {
 		       	}
 	                   
 		      }  
-	      else                                      //if Data is
+	      else                                      
 	       {
 	    	  resp.setContentType("text/html");
 	    	     PrintWriter out=resp.getWriter();

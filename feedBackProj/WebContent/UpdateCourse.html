@@ -19,7 +19,7 @@
         <div class="navbar">
                    
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="homeTrAdmin.html">Home Page</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="HomeTrAdmin.html">Home Page</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="dropdown">
                      <button class="dropbtn">Course Maintainance 
                        <i class="fa fa-caret-down"></i>
@@ -36,7 +36,7 @@
           <div id="mainContent"> 
             
             <div id="subContent">
-                <form action="UpdateCourse" >
+                <form action="UpdateCourse" method="post">
                
                     <table align="center" cellspacing="10">
                       <tr>
@@ -45,16 +45,28 @@
                           </td>
                       </tr>
                     
+                     <tr>
+                     <td>
+                     Course Id: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="ucid"/>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>
+                       Course Name:&nbsp;<input type="text" name="ucname"/>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>
+                       No.of.Days:&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="ucdays"/>
+                       <br><br>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     </td> 
+                     </tr>
                     <tr>
-                      <td>
-                      Course Id: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="cid"/>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Course Name:&nbsp;<input type="text" name="cname"/>
-                      </td>
-                    </tr>
+              <td>
+                  <input type="submit" value="Update Course">
+              </td>
+          </tr>
                     </table>
                </form> 
                
