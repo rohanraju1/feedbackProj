@@ -27,15 +27,7 @@
  <url-pattern>/addFaculty</url-pattern>
  </servlet-mapping>
  
-  <servlet>
-<servlet-name>HomeAdminServlet</servlet-name>
-<servlet-class>org.cap.feedbackproj.controller.HomeAdminController</servlet-class>
-</servlet>
-
- <servlet-mapping>
- <servlet-name>HomeAdminServlet</servlet-name>
- <url-pattern>/faculSkill</url-pattern>
- </servlet-mapping>
+  
  
 
  

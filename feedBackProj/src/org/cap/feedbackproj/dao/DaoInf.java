@@ -6,6 +6,7 @@ import java.util.Map;
 import org.cap.feedbackproj.dto.CourseDTO;
 import org.cap.feedbackproj.dto.EmployeeDTO;
 import org.cap.feedbackproj.dto.FacultyDTO;
+import org.cap.feedbackproj.dto.FeedBackDTO;
 import org.cap.feedbackproj.dto.ParticipantDTO;
 import org.cap.feedbackproj.dto.TrainingProgramDTO;
 
@@ -46,9 +47,9 @@ public interface DaoInf {
 
     public Map<CourseDTO,EmployeeDTO> getViewAddFeedBack();
 
-
+    public boolean addFeedBack(FeedBackDTO feedBackDTO);
 	/*
-   public boolean addFeedBack();
+   
    public List<FeedBackDTO> viewFeedBackReport();*/
 
 

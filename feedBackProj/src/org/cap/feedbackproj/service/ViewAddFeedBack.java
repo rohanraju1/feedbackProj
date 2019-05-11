@@ -22,6 +22,16 @@ public class ViewAddFeedBack {
 		return getMap;
 	}
 	
-	
+	public static boolean addFeedback() 
+	{
+		boolean addStat=false;
+		
+		DaoInf addFeed=new DaoImpl();
+		
+		
+		
+		return addStat;
+		
+	}
 	
 }

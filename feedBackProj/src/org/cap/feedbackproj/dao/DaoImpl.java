@@ -9,6 +9,7 @@ import java.util.Map;
 import org.cap.feedbackproj.dto.CourseDTO;
 import org.cap.feedbackproj.dto.EmployeeDTO;
 import org.cap.feedbackproj.dto.FacultyDTO;
+import org.cap.feedbackproj.dto.FeedBackDTO;
 import org.cap.feedbackproj.dto.ParticipantDTO;
 import org.cap.feedbackproj.dto.TrainingProgramDTO;
 import org.cap.feedbackproj.util.DBUtils;
@@ -49,7 +50,6 @@ public  class DaoImpl implements DaoInf {
 	/*return Employee Object based on Faculty-Id and Name */
 	@Override
 	public EmployeeDTO getEmployeeDetails(int FacultyId, String Ename) {
-		System.out.println("check a");
 		Connection con=DBUtils.connect();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -589,7 +589,7 @@ public  class DaoImpl implements DaoInf {
 		}
 		return delStatus;
 	}
-
+          Map<EmployeeDTO,List<EmployeeDTO>> t;
 	/*return List Object of Training Programs present in Training Program Table*/
 	@Override
 	public List<TrainingProgramDTO> viewPrgms() {
@@ -801,24 +801,24 @@ public  class DaoImpl implements DaoInf {
 		Connection con=DBUtils.connect();
 		Statement stmt=null;
 		ResultSet rs=null;
-		Map<CourseDTO,EmployeeDTO> map=null;
+		Map<CourseDTO,EmployeeDTO> map=new HashMap<CourseDTO,EmployeeDTO>();
 		try {
-			String query="SELECT c.`Course_Name`,e.`EmployeeName`\r\n" + 
-					"FROM `training_program` tp,`course_master` c,`employee_master` e,`faculty_skill` f\r\n" + 
-					"WHERE tp.`Course_Code`=c.`Course_ID` AND tp.`Faculty_Code`=f.`Faculty_Id` AND f.`Faculty_Id`=e.`Employee_ID`";
+			String query="SELECT c.Course_Name,e.EmployeeName\r\n" + 
+					"FROM training_program tp,course_master c,employee_master e,faculty_skill f\r\n" + 
+					"WHERE tp.Course_Code=c.Course_ID AND tp.Faculty_Code=f.Faculty_Id AND f.Faculty_Id=e.Employee_ID";
 			
 			stmt=con.createStatement();
 			rs=stmt.executeQuery(query);
-			CourseDTO cDto=new CourseDTO();
-			EmployeeDTO eDto=new EmployeeDTO();
+			
 			while(rs.next())
 			{
-				map=new HashMap<CourseDTO,EmployeeDTO>();
-				
-				cDto.setCourseName(rs.getString("Course_Name"));
-				eDto.setEmployeeName(rs.getString("EmployeeName"));
+				CourseDTO cDto=new CourseDTO();
+			EmployeeDTO eDto=new EmployeeDTO();
+				String cname=rs.getString("c.Course_Name");
+				cDto.setCourseName(cname);
+				String ename=rs.getString("e.EmployeeName");
+				eDto.setEmployeeName(ename);
 				map.put(cDto, eDto);
-				System.out.println("check");
 			}
 			
 			
@@ -827,6 +827,27 @@ public  class DaoImpl implements DaoInf {
 		   e.printStackTrace();
 		}
                return map;		
+	}
+
+	@Override
+	public boolean addFeedBack(FeedBackDTO feedBackDTO) {
+
+		Connection con=DBUtils.connect();
+		PreparedStatement pstmt=null;
+		boolean statFeed=false;
+		
+		try {
+			String sql="insert into feedback_master";
+	         pstmt=con.prepareStatement(sql);
+   		    	
+		} 
+		catch (Exception e) 
+		{
+             e.printStackTrace();
+		}
+		
+		
+		return statFeed;
 	}
 
 
