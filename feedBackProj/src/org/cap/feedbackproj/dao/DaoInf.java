@@ -45,12 +45,11 @@ public interface DaoInf {
 
 	public boolean deleteParticipantDetails(ParticipantDTO delParticipantDTO);
 
-    public Map<CourseDTO,EmployeeDTO> getViewAddFeedBack();
+	public Map<CourseDTO,EmployeeDTO> getViewAddFeedBack();
 
-    public boolean addFeedBack(FeedBackDTO feedBackDTO);
-	/*
-   
-   public List<FeedBackDTO> viewFeedBackReport();*/
+	public boolean addFeedBack(FeedBackDTO feedBackDTO);
+
+	public List<FeedBackDTO> viewFeedBackReport();
 
 
 }

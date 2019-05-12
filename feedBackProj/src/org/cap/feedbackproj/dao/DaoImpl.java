@@ -794,7 +794,7 @@ public  class DaoImpl implements DaoInf {
 		return delStatus;
 	}
 
-	
+	/* return key and value pair of courses and employees names for Feedback form dropdown*/
 	@Override
 	public Map<CourseDTO, EmployeeDTO> getViewAddFeedBack() {
 
@@ -829,6 +829,7 @@ public  class DaoImpl implements DaoInf {
                return map;		
 	}
 
+	/*return boolean value based on adding feedback to the table*/
 	@Override
 	public boolean addFeedBack(FeedBackDTO feedBackDTO) {
 
@@ -837,9 +838,35 @@ public  class DaoImpl implements DaoInf {
 		boolean statFeed=false;
 		
 		try {
-			String sql="insert into feedback_master";
+			String sql="INSERT INTO feedback_master \r\n" + 
+					"VALUES(\r\n" + 
+					"(SELECT tp.`Training_Code`\r\n" + 
+					" FROM `training_program` tp,`faculty_skill` f,`course_master` c,`training-participant_enrollment` tpe\r\n" + 
+					"WHERE  tp.`Course_Code`=c.`Course_ID` AND tp.`Faculty_Code`=f.`Faculty_Id` AND \r\n" + 
+					"tp.`Training_Code`=tpe.`Training_code` AND tpe.`Participant_Id`=?),\r\n" + 
+					"(SELECT tpe.`Participant_Id`\r\n" + 
+					" FROM `training_program` tp,`faculty_skill` f,`course_master` c,`training-participant_enrollment` tpe\r\n" + 
+					"WHERE  tp.`Course_Code`=c.`Course_ID` AND tp.`Faculty_Code`=f.`Faculty_Id` AND \r\n" + 
+					"tp.`Training_Code`=tpe.`Training_code` AND tpe.`Participant_Id`=?),?,?,?,?,?,?,?)\r\n" + 
+					"";
 	         pstmt=con.prepareStatement(sql);
-   		    	
+   		    
+	         pstmt.setInt(1,feedBackDTO.getParticipantId());
+	         pstmt.setInt(2,feedBackDTO.getParticipantId());
+	         pstmt.setInt(3,feedBackDTO.getPresentationCommunication());
+	         pstmt.setInt(4,feedBackDTO.getClarifyDoubts());
+	         pstmt.setInt(5,feedBackDTO.getTimeManagement());
+	         pstmt.setInt(6,feedBackDTO.getHandOuts());
+	         pstmt.setInt(7,feedBackDTO.getNwSofthardware());
+	         pstmt.setString(8,feedBackDTO.getComments());
+	         pstmt.setString(9,feedBackDTO.getSuggestions());
+	         
+	        int count= pstmt.executeUpdate();
+	        
+	        if(count>0)
+	        {
+	        	statFeed=true;
+	        }
 		} 
 		catch (Exception e) 
 		{
@@ -848,6 +875,12 @@ public  class DaoImpl implements DaoInf {
 		
 		
 		return statFeed;
+	}
+
+	/*return list of feedback from the db*/
+	@Override
+	public List<FeedBackDTO> viewFeedBackReport() {
+		return null;
 	}
 
 

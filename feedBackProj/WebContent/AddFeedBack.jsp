@@ -15,11 +15,11 @@
 </head>
 <body bgcolor="#3498DB">
 	<div id="fbform">
-		<form action="/addFeedback">
+		<form action="./addFeedback" method="post">
 			<br>
 			<br>
 			<table align="center" cellspacing="15" cellpadding="10">
-				<th>Add FeedBack</th>
+				<th>Add FeedBack  </th>
 				<tr>
 					<td><Label>Course:</Label></td>
 					<td>
